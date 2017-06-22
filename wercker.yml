@@ -1,0 +1,30 @@
+start:
+  box:
+    id: alpine:latest
+    cmd: /bin/sh
+  steps:
+    - script:
+      name: Start
+      code: |-
+        echo "Start ${TF_VAR_env}"
+test:
+  box:
+    id: youyo/terraform:0.9.8
+    cmd: /bin/sh
+  steps:
+    - script:
+      name: Test
+      code: |-
+        echo "Test ${TF_VAR_env}"
+        terraform validate
+        terraform plan
+deploy:
+  box:
+    id: youyo/terraform:0.9.8
+    cmd: /bin/sh
+  steps:
+    - script:
+      name: Deploy
+      code: |-
+        echo "Deploy ${TF_VAR_env}"
+        terraform apply
