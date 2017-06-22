@@ -42,3 +42,10 @@ resource "aws_s3_bucket_policy" "log" {
   policy     = "${data.aws_iam_policy_document.log.json}"
   depends_on = ["aws_s3_bucket.log"]
 }
+
+resource "aws_s3_bucket" "test" {
+  bucket        = "${var.env}-test-jawsug-sendai"
+  region        = "${var.aws_region}"
+  acl           = "private"
+  force_destroy = true
+}
