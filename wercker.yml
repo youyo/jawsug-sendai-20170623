@@ -16,6 +16,7 @@ test:
       name: Test
       code: |-
         echo "Test ${TF_VAR_env}"
+        terraform init -backend=true -backend-config="bucket=${TF_VAR_env}-jawsug-sendai-terraform-tfstate"
         terraform validate
         terraform plan
 deploy:
